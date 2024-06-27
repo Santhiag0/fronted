@@ -58,7 +58,7 @@ const LoginPage = () => {
           <h1 className="text-2xl font-bold text-[#c2c5cb] mb-8">Reporteador SQL</h1>
           <form onSubmit={handleLogin}>
             <div className="mb-4">
-              <label className="block text-[#c2c5cb] mb-2">Username:</label>
+              <label className="block text-[#c2c5cb] mb-2">Correo:</label>
               <input 
                 type="text" 
                 value={email} 
