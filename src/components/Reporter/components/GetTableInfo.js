@@ -1,8 +1,9 @@
-export default async function GetTableInfo(data, conection) {
+import Cookies from "js-cookie";
+
+export default async function GetTableInfo(data) {
   let infoStore = null;
 
 if (data === 5) {
-  console.log("entro a la condicion");
     async function fetchData() {
       const response = await fetch(
         "http://localhost/A/controllers/apiEstudiantes.php?server=localhost&db=universidad&user=root&psw="
@@ -26,9 +27,10 @@ if (data === 5) {
     async function fetchData() {
       let enco = encodeURIComponent(data);
       let string =
-        "http://localhost/A/controllers/apiEstudiantes.php?server=localhost&db=universidad&user=root&psw=&SQL=" + enco;
+        "https://reposteador.onrender.com/database-connection/"+Cookies.get("id-con")+"/query?query=" + enco+"&type=mysql";
       const response = await fetch(string);
       const data1 = await response.json();
+      console.log(Cookies.get("id-con"));
       // Verificar si data1 tiene elementos
       if (data1 && data1.length > 0) {
         // Crear un objeto con los nombres de los campos

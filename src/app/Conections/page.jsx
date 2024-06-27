@@ -4,7 +4,7 @@ import Conexiones from '../../components/Conexiones'
 
 const MainPage = () => {
     return (
-        <div className="h-screen bg-gradient-to-r from-gray-200 to-white">
+        <div className="h-screen">
             <Navbar />
             <Conexiones/>
         </div>

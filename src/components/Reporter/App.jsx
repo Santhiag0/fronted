@@ -4,18 +4,19 @@ import Buttons from "./components/Buttons";
 import SqlEditor from "./components/SqlEditor";
 import Table from "./components/Table";
 
-function App() {
+function App(id_database) {
   const [value, setValue] = useState("select * from estudiantes;");
   const [rows, setRows] = useState([]);
   const [headers, setHeaders] = useState([]);
   const [query, setQuery] = useState("");
   const [defaults, setDefaults] = useState(1);
   const [csvData, setCSVData] = useState([]);
+  const [id, setId] = useState(id_database);
 
   if (value === "") {
-    toast.error("Please remove the code and run the query");
-    setValue(
-      "-- Online SQL Editor to Run SQL Online. \n-- Use the editor to view all tables in SQL operations.\n\n-- Remove the code and Start exploring!\n\n-- Happy Coding!"
+    toast.loading("Esperando Query");
+        setValue(
+      "-- Escribe aqui tu sentencia SQL."
     );
   }
 
@@ -43,6 +44,7 @@ function App() {
                 setCSVData={setCSVData}
                 setDefaults={setDefaults}
                 defaults={defaults}
+                conection={id}
               />
             </div>
             <SqlEditor value={value} setValue={setValue} />

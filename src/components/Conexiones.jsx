@@ -11,7 +11,7 @@ const Conexiones = () => {
   const [currentConnection, setCurrentConnection] = useState(null);
   const [formData, setFormData] = useState({
     host: '',
-    port: '',
+    port: 0,
     username: '',
     password: '',
     database: ''
@@ -65,7 +65,7 @@ const Conexiones = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg mt-10 text-black">
+    <div className="max-w-4xl mx-auto p-6 bg-slate-100 shadow-md rounded-lg mt-10 text-black">
       <h1 className="text-2xl font-bold mb-4 text-center">Conexiones de Base de Datos</h1>
       <button
         onClick={() => openModal()}
@@ -75,7 +75,7 @@ const Conexiones = () => {
       </button>
       <ul>
         {connections.map((connection) => (
-          <li key={connection.id_database} className="mb-4 p-4 border rounded">
+          <li key={connection.id_database} className="mb-4 p-4 border rounded bg-white">
             <p><strong>Host:</strong> {connection.host}</p>
             <p><strong>Puerto:</strong> {connection.port}</p>
             <p><strong>Usuario:</strong> {connection.username}</p>

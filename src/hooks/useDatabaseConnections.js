@@ -23,20 +23,36 @@ const useDatabaseConnections = () => {
   };
 
   const createConnection = async (connectionData) => {
+    connectionData.port = parseInt(connectionData.port, 10);
+    const actual = JSON.stringify(connectionData);
     const token = cookies.get('token');
+    console.log('token llega aca');
+    console.log(actual);
     try {
-      const response = await axios.post('https://reposteador.onrender.com/database-connection', connectionData, {
+      const response = await fetch('https://reposteador.onrender.com/database-connection', {
+        method: 'POST',
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: actual
       });
-      setConnections([...connections, response.data.data]);
-      return response.data;
+      console.log('response llega aca');
+      console.log(response);
+      
+      if (!response.ok) {
+        throw new Error('Error creating connection');
+      }
+  
+      const data = await response.json();
+      setConnections([...connections, data.data]);
+      return data;
     } catch (error) {
       console.error('Error creating connection:', error);
       return null;
     }
   };
+  
 
   const updateConnection = async (id, connectionData) => {
     const token = cookies.get('token');

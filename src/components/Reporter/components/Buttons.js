@@ -20,10 +20,8 @@ function Buttons({
       setHeaders(tableHeaders);
       console.log(tableHeaders)
       setRows(tableRows);
-      console.log("llega 2");
       const temp = [];
       if (tableHeaders.length > 0 && tableRows.length > 0) {
-        console.log("llega 3");
         temp.push(tableHeaders);
         tableRows.forEach((row) => {
           temp.push(row);
@@ -43,7 +41,7 @@ function Buttons({
   const reset = () => {
     // function to reset the editor
     setQuery("");
-    setValue("select * from customers;");
+    setValue("select * from estudiantes;");
     setDefaults(1);
     setHeaders([]);
     setRows([]);
